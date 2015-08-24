@@ -19,6 +19,6 @@ for n in notify:
   if not n.unread: continue
   m = re.search('has\smentioned.*post\s([^\/]+)\s([\@\/\w\-\_\.]+)\.+', str(n))
   if hasattr(m, 'group'):
-    client.post(foaas(m.group(3)))
+    client.post(foaas(m.group(2)))
   # finally mark as read
   n.mark()
