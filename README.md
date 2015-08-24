@@ -1,5 +1,5 @@
-apibot
-=======
+foaasBot
+========
 
 requirements
 ------------
