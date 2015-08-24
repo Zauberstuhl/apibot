@@ -23,8 +23,8 @@ for n in notify:
     if hasattr(m, 'group'):
       command = m.group(2).replace(' ', '__')
       client.post(foaas(command))
-
-    # finally mark as read
-    n.mark()
   except urllib2.URLError:
     log_write("ERROR: "+str(n))
+
+  # finally mark as read
+  n.mark()
