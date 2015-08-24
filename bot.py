@@ -17,7 +17,7 @@ client=Client()
 notify = client.notifications()
 for n in notify:
   if not n.unread: continue
-  m = re.search('(.+)\shas\smentioned\syou\sin\sthe\spost\s([^\/]+)\s([\@\/\w\.]+)', str(n))
+  m = re.search('has\smentioned.*post\s([^\/]+)\s([\@\/\w\-\_\.]+)\.+', str(n))
   if hasattr(m, 'group'):
     client.post(foaas(m.group(3)))
   # finally mark as read
