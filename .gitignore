@@ -1,7 +1,7 @@
 diaspy
 config.py
 fefe.db
-log.txt
+bot.log
 
 *.py[cod]
 
@@ -38,4 +38,3 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
-config.py
