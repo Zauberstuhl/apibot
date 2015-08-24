@@ -13,4 +13,4 @@ def foaas(command):
 
   request = urllib2.Request(config.apiurl+command, headers={"Accept" : "text/plain","User-Agent": "diasporaBot/1.0.0"})
   contents = urllib2.urlopen(request).read()
-  return contents + mention
+  return contents.replace('__', ' ') + mention

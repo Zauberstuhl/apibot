@@ -21,8 +21,10 @@ for n in notify:
   m = re.search('\shas\smentioned.+post\s([^\/]+)\s(.+)\.+$', str(n))
   try:
     if hasattr(m, 'group'):
-      client.post(foaas(m.group(2).replace(' ', '_')))
+      command = m.group(2).replace(' ', '__')
+      client.post(foaas(command))
+
     # finally mark as read
     n.mark()
   except urllib2.URLError:
-    print "damn that hurt :("
+    log_write("ERROR: "+str(n))
