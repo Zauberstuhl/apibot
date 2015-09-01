@@ -18,13 +18,20 @@ client=Client()
 notify = client.notifications()
 for n in notify:
   if not n.unread: continue
-  m = re.search('\shas\smentioned.+post\s([^\/]+)\s(.+)\.+$', str(n))
-  try:
-    if hasattr(m, 'group'):
-      command = m.group(2).replace(' ', '__')
-      client.post(foaas(command))
-  except urllib2.URLError:
-    log_write("ERROR: "+str(n))
+  idm = re.search('href=\\"/posts/(\d+?)\\"', n._data['note_html'])
 
-  # finally mark as read
+  if hasattr(idm, 'group'):
+    text = client.getPostText(idm.group(1))
+    m = re.search('^\s*\@\{[^\};]+;[^\};]+\}\s+(\/.+?)$', text)
+    if hasattr(m, 'group'):
+      try:
+        command = m.group(1)
+        client.post(foaas(command))
+      except urllib2.URLError:
+        log_write("ERROR: "+command)
+
+  # mark as read if it
+  # is not a mention
   n.mark()
+
+client.logout()
