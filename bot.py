@@ -14,7 +14,7 @@ for n in notify:
   if not n.unread: continue
   idm = re.search('href=\\"/posts/(\d+?)\\"', n._data['note_html'])
 
-  if hasattr(idm, 'group'):
+  if (n.type == "mentioned" and hasattr(idm, 'group')):
     post_id = idm.group(1)
     post = client.getPost(post_id)
     text = post._data['text']
