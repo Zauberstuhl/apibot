@@ -1,4 +1,5 @@
 pod = "https://POD.URL"
 username = "USERNAME"
 password = "PASSWORD"
+profile_guid = "GUID"
 apiurl ="https://api.service.de/"

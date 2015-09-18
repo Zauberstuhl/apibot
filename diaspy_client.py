@@ -34,10 +34,9 @@ class Client:
     n = diaspy.notifications.Notifications(self.connection)
     return n.last() # last five events
 
-  def getPostText(self, id=0):
+  def getPost(self, pid=0):
     """Return post by ID"""
-    p = diaspy.models.Post(self.connection, id, comments=False)
-    return p._data['text']
+    return diaspy.models.Post(self.connection, id=pid)
 
   def logout(self):
     self.connection.logout()
