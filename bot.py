@@ -26,7 +26,7 @@ for n in notify:
     else:
       client.comment(post_id,
         "Fuck this! Your command is not well-formed.\n"
-        "Check my profile description or "
+        "Check my [profile description](/people/448c48d02c1c013349f314dae9b624ce) or "
         "[fuck around with him...](/posts/0f99d95040130133bbca14dae9b624ce)")
 
   # mark as read if it
