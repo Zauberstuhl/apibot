@@ -23,6 +23,11 @@ for n in notify:
         client.post(foaas(command))
       except urllib2.URLError:
         client.comment(post_id, "Fuck this! Something went wrong :\\")
+    else:
+      client.comment(post_id,
+        "Fuck this! Your command is not well-formed.\n"
+        "Check my profile description or "
+        "[fuck around with him...](/posts/0f99d95040130133bbca14dae9b624ce)")
 
   # mark as read if it
   # is not a mention
