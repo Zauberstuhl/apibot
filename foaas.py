@@ -12,9 +12,9 @@ def foaas(command):
     command = re.sub("([^@\/\s]+)@[^@]+\.[^@\/\s]+", r'\1', command)
 
   request = urllib2.Request(
-    config.apiurl+command.replace(' ', '__'),
+    config.apiurl+urllib2.quote(command),
     headers={"Accept" : "text/plain",
     "User-Agent": "diasporaBot/1.0.0"}
   )
   contents = urllib2.urlopen(request).read()
-  return contents.replace('__', ' ') + mention
+  return urllib2.unquote(contents) + mention
