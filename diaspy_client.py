@@ -19,7 +19,7 @@ class Client:
     post = self.stream.post(text, aspect_ids='public', provider_display_name='foaasBot')
     return post
 
-  def comment(self, post_id, text):
+  def comment(self, id=0, guid='', text=''):
     """This function comments on a post
     :param post_id: ID of post to comment on
     :type post_id: int
@@ -27,7 +27,7 @@ class Client:
     :type text: str
     """
     self.stream = diaspy.streams.Stream(self.connection, 'stream.json')
-    diaspy.models.Post(self.connection,id=post_id).comment(text)
+    diaspy.models.Post(self.connection, id=id, guid=guid).comment(text)
 
   def notifications(self):
     """Return last notifications from user"""

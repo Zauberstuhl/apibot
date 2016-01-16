@@ -4,7 +4,7 @@ import re
 import urllib2
 import config
 
-def foaas(command):
+def foaas(command, comment=False):
   mention = "\n\n#foaas "
   m = re.search("([^@\/\s]+@[^@]+\.[^@\/\s]+)", command, re.I)
   if hasattr(m, 'group'):
@@ -17,4 +17,8 @@ def foaas(command):
     "User-Agent": "diasporaBot/1.0.0"}
   )
   contents = urllib2.urlopen(request).read()
-  return urllib2.unquote(contents) + mention
+
+  if comment:
+    return urllib2.unquote(contents)
+  else:
+    return urllib2.unquote(contents) + mention
